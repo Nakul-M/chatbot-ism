@@ -5,7 +5,6 @@ from src.data_loader import load_all_documents
 from src.vectorstore import FaissVectorStore
 from src.search import RAGSearch
 import uvicorn
-import os
 
 # Load documents & initialize vectorstore
 docs = load_all_documents("data")
@@ -29,5 +28,4 @@ def ask_portal(req: QueryRequest):
     return {"answer": response}
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run("app:app", host="0.0.0.0", port=port) 
+    uvicorn.run(app, host="0.0.0.0", port=8000)
